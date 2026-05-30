@@ -1,45 +1,84 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Projekt na studia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Crypto Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
 </head>
 <body>
-    <header>
-        <h1>
-            Crypto Dashboard
-        </h1>
-    </header>
-    <main>
-        <b>
-            
-        </b>
-    <div id="table">
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">Lp.</th>
-            <th scope="col">Logo</th>
-            <th scope="col">Nazwa</th>
-            <th scope="col">Symbol</th>
-            <th scope="col">Kapitalizacja rynkowa</th>
-            <th scope="col">Cena</th>
-            <th scope="col">Cena Max 24h</th>
-            <th scope="col">Cena Min 24h</th>
-        </tr>
-        </thead>
 
-        <!-- Tu będą lądować wiersze z API -->
-        <tbody id="result_table"></tbody>
-    </table>
-    </div>
-    </main>
-    <footer>
-        Autorzy: 
-        <li>Adrian Pawłowski</li>
-        <li>Łukasz Sosna</li>
-    </footer>
-    <script src="script.js"></script>
+<header>
+  <h1>💰 Crypto Dashboard</h1>
+</header>
+
+<main>
+
+<!-- 🔎 WYSZUKIWARKA -->
+<div id="searchSection">
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Szukaj kryptowaluty">
+    <button>Szukaj</button>
+  </form>
+</div>
+
+<!-- 🔘 KONTROLKI -->
+<div id="controls">
+  <button onclick="sortByPrice()">Sortuj po cenie ↓</button>
+  <button onclick="showFavorites()">⭐ Ulubione</button>
+  <button onclick="resetList()">🔄 Wszystkie</button>
+</div>
+
+<p id="favCount"></p>
+
+<!-- ⏳ LOADER -->
+<div id="loader">Ładowanie...</div>
+
+<!-- 📊 LISTA -->
+<div id="listView">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nazwa</th>
+        <th>Cena</th>
+        <th>Market Cap</th>
+        <th>⭐</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div id="pagination"></div>
+</div>
+
+<!-- 🔍 SZCZEGÓŁY -->
+<div id="detailsView" class="hidden">
+  <button onclick="goBack()">⬅ Powrót</button>
+  <div id="details"></div>
+</div>
+
+<!-- 📝 FORMULARZ -->
+<div id="formView" class="hidden">
+  <button onclick="goBack()">⬅ Powrót</button>
+
+  <h2>Dodaj / edytuj notatkę</h2>
+  <form id="noteForm">
+    <input type="text" id="noteInput" placeholder="Twoja notatka">
+    <button>Zapisz</button>
+  </form>
+</div>
+
+</main>
+
+<footer>
+  Adrian Pawłowski | Łukasz Sosna
+</footer>
+
+<script src="storage.js"></script>
+<script src="api.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
